@@ -1,0 +1,45 @@
+<tr>
+    
+    {{#if @useInnerEach}}
+           {{#each @item.columns as |column|}}
+            <td>
+                {{if @isSubitem 'Sub Row' 'Row'}} - {{@index}} {{column.columnName}}
+            </td>
+        {{/each}}
+    {{else}}
+   
+    <td>
+        {{if @isSubitem 'Sub Row' 'Row'}} - {{@index}} One
+    </td>
+    <td>
+        {{if @isSubitem 'Sub Row' 'Row'}} - {{@index}} Two
+    </td>
+    <td>
+        {{if @isSubitem 'Sub Row' 'Row'}} - {{@index}} Three
+    </td>
+    <td>
+        {{if @isSubitem 'Sub Row' 'Row'}} - {{@index}} Four
+    </td>
+    <td>
+        {{if @isSubitem 'Sub Row' 'Row'}} - {{@index}} Five
+    </td>
+    <td>
+        {{if @isSubitem 'Sub Row' 'Row'}} - {{@index}} Six
+    </td>
+    <td>
+        {{if @isSubitem 'Sub Row' 'Row'}} - {{@index}} Seven
+    </td>
+    <td>
+        {{if @isSubitem 'Sub Row' 'Row'}} - {{@index}} Eight
+    </td>
+    {{/if}}
+
+{{#unless @isSubitem}}
+    <td><button type="button" {{on "click" (fn this.expandRow @index)}}>Expand</button></td>
+{{/unless}}
+</tr>
+  {{#if this.isExpanded}}
+      {{#each @item.subItems as |item index|}}
+            <Item @item={{item}} @index={{index}} @isSubitem={{true}} />
+      {{/each}}
+  {{/if}}

@@ -1,0 +1,16 @@
+Testing
+
+
+<button type="button" {{on 'click' this.showTable}}>Show/Hide Table</button>
+
+<label for="each-checkbox">Use Inner Column Each</label>
+<Input id="each-checkbox" @type="checkbox" name="useInnerEach" @checked={{this.useInnerEach}} />
+{{#if this.isShowingTable}}
+    <table>
+        <tbody>
+            {{#each this.items as |item index|}}
+                <Item @item={{item}} @index={{index}} @useInnerEach={{this.useInnerEach}} />
+            {{/each}}
+        </tbody>
+    </table>
+{{/if}}
